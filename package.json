@@ -8,6 +8,7 @@
     "express": "latest",
     "request": "latest",
     "cheerio": "latest",
-    "underscore.string": "latest"
+    "underscore.string": "latest",
+    "lodash": "latest"
   }
 }
