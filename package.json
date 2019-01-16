@@ -9,6 +9,7 @@
     "request": "latest",
     "cheerio": "latest",
     "underscore.string": "latest",
-    "lodash": "latest"
+    "lodash": "latest",
+    "sshpk": "latest"
   }
 }
