@@ -5,26 +5,32 @@ var _ = require("underscore.string");
 var app = express();
 
 app.get('/scrape', function (req, res) {
-console.log("let's scrap");
+    console.log("let's scrap");
     url = "https://www.senscritique.com/search?categories[0][0]=Livres&q=ne%20tirez%20pas%20sur%20l%27oiseau%20moqueur&";
 
     request(url, function (error, response, html) {
 
         if (!error) {
-            //console.log(html);
+            var json = [];
+
             var $ = cheerio.load(html);
 
-           /* $('/html/body/div[2]/div[2]/div[2]/div[2]/div[1]/div[1]/div/a/h4').find($("[id^='annonce']"))unction (i, elem) {
-.each(f
-            });*/
+            /* $('/html/body/div[2]/div[2]/div[2]/div[2]/div[1]/div[1]/div/a/h4').find($("[id^='annonce']"))unction (i, elem) {
+ .each(f
+             });*/
 
-           var title, release, rating;
-            $('.sk-hits').each(function (i, elem) {
-                console.log("---------------------------------");
-                var data = $(this);
-                title = data.children().first().text();
-                console.log(title);
-               // json.title = title;
+            var title, author, rating, link, image;
+            $('.ProductListItem__Container-s1ci68b-0').each(function (i, elem) {
+                // -- just take the first result
+                if (i < 1) {
+                    var data = $(this);
+                    image = $(this).find("a").find("img").attr("src");
+                    console.log(image);
+                    title = $(this).find(".ProductListItem__Title-s1ci68b-9").first().text();
+                    console.log(title);
+                    json.push({ "image": image, "title": title});
+                    console.log(json);
+                }
             })
 
             res.send(html);
