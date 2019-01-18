@@ -1,7 +1,7 @@
 {
-  "name": "ScrapServer",
+  "name": "scrapserver",
   "version": "0.0.1",
-  "description": "Scrape le web.",
+  "description": "Another scrap server",
   "main": "server.js",
   "author": "Fabien Daniel",
   "dependencies": {
