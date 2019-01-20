@@ -10,6 +10,7 @@
     "cheerio": "latest",
     "underscore.string": "latest",
     "lodash": "latest",
-    "sshpk": "latest"
+    "sshpk": "latest",
+    "promise": "latest"
   }
 }
