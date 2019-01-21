@@ -17,10 +17,9 @@ module.exports = {
                     var urlResponse;
                     $('.ProductListItem__Container-s1ci68b-0').each(function (i, elem) {
                         // -- get the url of the first result
-                        if (i < 1) {
-                            var data = $(this);
-                            urlResponse = $(this).find(".ProductListItem__TextContainer-s1ci68b-8").find("a").attr("href");
-                        }
+                        var data = $(this);
+                        urlResponse = $(this).find(".ProductListItem__TextContainer-s1ci68b-8").find("a").attr("href");
+                        return false;
                     });
                     console.log(urlResponse);
                     if (urlResponse) {
@@ -53,24 +52,6 @@ module.exports = {
                     });
                     console.log(json);
                     resolve(json);
-                    /*var urlResponse;
-                    $('.ProductListItem__Container-s1ci68b-0').each(function (i, elem) {
-                        // -- get the url of the first result
-                        if (i < 1) {
-                            var data = $(this);
-                            urlResponse = $(this).find(".ProductListItem__TextContainer-s1ci68b-8").find("a").attr("href");
-                            console.log(urlResponse);
-                            /*title = $(this).find(".ProductListItem__Title-s1ci68b-9").first().text();
-                            console.log(title);
-                            json.push({
-                                "image": image,
-                                "title": title
-                            });
-                            console.log(json);
-                        }
-                    })*/
-
-                    //res.send(json);
                 } else {
                     reject("Erreur lors de la requête");
                 }
