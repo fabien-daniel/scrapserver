@@ -21,7 +21,6 @@ module.exports = {
                         urlResponse = $(this).find(".ProductListItem__TextContainer-s1ci68b-8").find("a").attr("href");
                         return false;
                     });
-                    console.log(urlResponse);
                     if (urlResponse) {
                         resolve(urlResponse);
                     } else {
@@ -44,13 +43,11 @@ module.exports = {
                     var title = utils.cleanText($('.pvi-product-title').attr('title'));
                     var author = utils.cleanText($('.pvi-productDetails-item').find('span').first().text());
 
-                    console.log(imageUrl);
                     json.push({
-                        "imageUrl": imageUrl,
-                        "title": title,
-                        "author": author
+                        "imageUrl": $('.pvi-hero-poster').attr('src'),
+                        "title": utils.cleanText($('.pvi-product-title').attr('title')),
+                        "author": utils.cleanText($('.pvi-productDetails-item').find('span').first().text())
                     });
-                    console.log(json);
                     resolve(json);
                 } else {
                     reject("Erreur lors de la requête");

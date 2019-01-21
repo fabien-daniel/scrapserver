@@ -5,16 +5,16 @@ var senscritique = require("./connector/connector.senscritique");
 
 var app = express();
 
-app.post('/books', function (req, res) {
+app.post('/books', (req, res) => {
     // -- Build search url and extract information of the first result
     var searchUrl = utils.buildSCSearchRequest(constants.SC_URL_SEARCH, constants.SC_BOOKS, req.query.q);
-    senscritique.getFirstUrlResult(searchUrl).then(function (bookUrl) {
-        senscritique.getMediaInformation(bookUrl).then(function (json) {
+    senscritique.getFirstUrlResult(searchUrl).then((bookUrl) => {
+        senscritique.getMediaInformation(bookUrl).then((json) => {
             res.send(json);
-        }, function (errorMessage) {
+        }, (errorMessage) => {
             utils.throwError(res, 404, errorMessage);
         })
-    }, function (errorMessage) {
+    }, (errorMessage) => {
         utils.throwError(res, 404, errorMessage);
     });
 })
